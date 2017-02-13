@@ -1,0 +1,21 @@
+{
+    "base": "/api/v1",
+    "port": "3005",
+    "modules": [
+        "./modules/movie"
+    ],
+    "services": [
+        {
+            "path": "./services/mongo",
+            "config": {
+                "connectionString": "mongodb://admin:admin@ds149329.mlab.com:49329/node-starter",
+                "options": {
+                    "server": {
+                        "poolSize": 5,
+                        "reconnectTries": "100500"
+                    }
+                }
+            }
+        }
+    ]
+}

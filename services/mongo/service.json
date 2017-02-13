@@ -1,0 +1,5 @@
+{
+    "name": "mongo",
+    "main": "./mongo.js",
+    "defaults": {}
+}

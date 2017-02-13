@@ -1,0 +1,26 @@
+{
+    "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "gateway, plugins:*, services:*"
+    },
+    "ext": "js",
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "/.vscode/*.*",
+        "/test/*.*",
+        "*.spec.*",
+        "*.json",
+        "/coverage",
+        "/out"
+    ],
+    "verbose": true,
+    "execMap": {
+        "js": "node"
+    },
+    "watch": [
+        "**/*.js",
+        "**/*.json"
+    ]
+}

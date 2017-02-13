@@ -1,0 +1,8 @@
+{
+    "base": "/api/v1",
+    "port": "3005",
+    "modules": [
+        "../modules/movie"
+    ],
+    "services": []
+}

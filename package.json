@@ -1,0 +1,44 @@
+{
+  "name": "node-starter",
+  "version": "0.0.3",
+  "description": "Node.js starter application",
+  "main": "server.js",
+  "scripts": {
+    "test-cov": "cross-env NODE_ENV=test istanbul cover node_modules/mocha/bin/_mocha -- -t 5000 -R spec test/*.spec.js modules/**/*.spec.js middleware/**/*.spec.js",
+    "test": "cross-env NODE_ENV=test mocha --harmony -t 5000 -R spec test/*.spec.js modules/**/*.spec.js middleware/**/*.spec.js",  
+    "dev": "cross-env nodemon --harmony .",
+    "start": "cross-env node --harmony . -e production -p 3005"
+  },
+  "keywords": [
+    "node",
+    "starter",
+    "modular"
+  ],
+  "author": "viacheslav aksenchyk",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "cross-env": "^3.1.4",
+    "express": "^4.14.1",
+    "helmet": "^3.4.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.8.2",
+    "morgan": "^1.8.1",
+    "serve-favicon": "^2.3.2",
+    "strong-error-handler": "^1.2.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
+    "nodemon": "^1.11.0",
+    "sinon": "^1.17.7",
+    "supertest": "^3.0.0"
+  }
+}
