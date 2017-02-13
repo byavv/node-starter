@@ -28,7 +28,7 @@ $ npm test
 ### Modules
 
 Building blocks of the application. Any module consists of model ([Mongoose scheme](http://mongoosejs.com/docs/guide.html)), controller and router. 
-Application automatically constructs api according to [configurating file](https://github.com/byavv/node-starter/config.json) and router-provided entries.
+Application automatically constructs api according to [configurating file](https://github.com/byavv/node-starter/blob/master/config.json) and router-provided entries.
 
 ### Services
 
