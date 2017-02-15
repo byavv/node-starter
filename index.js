@@ -9,8 +9,9 @@ const http = require('http')
     , bodyParser = require('body-parser')
     , cookieParser = require('cookie-parser')
     , morgan = require('morgan')
-    , errorHandler = require('strong-error-handler');
-;
+    , errorHandler = require('strong-error-handler')
+    , cors = require('cors')
+    ;
 
 program
     .version('0.0.1')
@@ -30,6 +31,7 @@ app.set("root", program.config);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors({}));
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
