@@ -30,7 +30,7 @@ class MongoService extends ServiceBase {
             mongoose.disconnect(err => {
                 err ? reject(err) : resolve();
             });
-        })
+        });
     }
     getConnection() {
         return this.db;

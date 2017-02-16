@@ -43,11 +43,11 @@ module.exports = function (app) {
         },
 
         /**
-        * Find one movie by filter
-        * GET /movies/findOne?where[title][$eq]=title
-        * or GET /api/v1/movies/?where[meta.votes][$gt]=5
-        * https://docs.mongodb.com/manual/reference/operator/query/
-        */
+         * Find one movie by filter
+         * GET /movies/findOne?where[title][$eq]=title
+         * or GET /api/v1/movies/?where[meta.votes][$gt]=5
+         * https://docs.mongodb.com/manual/reference/operator/query/
+         */
         findOne(req, res, next) {
             movie.findOne(req.filter, (err, result) => {
                 res.json(result);
@@ -62,7 +62,7 @@ module.exports = function (app) {
             const id = req.params['id'];
             movie.findOneAndUpdate({ id: id }, req.body, (err, result) => {
                 if (err) return next(err);
-                res.json(result)
+                res.json(result);
             });
         },
 
@@ -73,7 +73,7 @@ module.exports = function (app) {
             const id = req.params['id'];
             movie.findOneAndRemove({ id: id }, req.body, (err, result) => {
                 if (err) return next(err);
-                res.json(result)
+                res.json(result);
             });
         }
     }

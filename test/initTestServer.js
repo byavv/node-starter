@@ -4,7 +4,6 @@ const express = require('express')
     , app = require('../')
     ;
 
-
 function load(app) {
     app.set('views', path.join(__dirname, '../', 'views'));
     app.set('view engine', 'jade');
@@ -12,7 +11,7 @@ function load(app) {
         .then(() => bs.applyModels(app))
         .then(() => bs.runServices(app))
         .then(() => bs.applyRoutes(app))
-        .then(() => bs.bootScripts(app))
+        .then(() => bs.bootScripts(app));
 }
 
 module.exports = function (clb) {
@@ -23,6 +22,6 @@ module.exports = function (clb) {
         });
     }).catch((error) => {
         console.error(error);
-        clb(error)
-    })
+        clb(error);
+    });
 }
