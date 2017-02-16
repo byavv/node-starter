@@ -16,7 +16,7 @@ function load(app) {
 }
 
 module.exports = function (clb) {
-    app.set("root", __dirname);
+    app.set("root", path.resolve('..', __dirname));
     load(app).then(() => {
         app.listen(3656, () => {
             clb(null, app);
