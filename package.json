@@ -7,7 +7,8 @@
     "test-cov": "cross-env NODE_ENV=test istanbul cover node_modules/mocha/bin/_mocha -- -t 5000 -R spec test/*.spec.js modules/**/*.spec.js middleware/**/*.spec.js",
     "test": "cross-env NODE_ENV=test mocha --harmony -t 5000 -R spec test/*.spec.js modules/**/*.spec.js middleware/**/*.spec.js",
     "dev": "cross-env nodemon --harmony .",
-    "start": "cross-env node --harmony . -e production -p 3005"
+    "start": "cross-env node --harmony . -e production -p 3005",
+    "hint": "jshint --verbose ."
   },
   "keywords": [
     "node",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.5",
+    "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.11.0",

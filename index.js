@@ -1,3 +1,4 @@
+"use strict";
 const http = require('http')
     , express = require('express')
     , program = require('commander')
@@ -37,10 +38,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('combined', {
-    skip: function (req, res) { return res.statusCode < 400 }
+    skip: function (req, res) { return res.statusCode < 400; }
 }));
 app.disable('x-powered-by');
 
+/* jshint ignore:start */
 async function load(app) {
     await bs.applyConfig(app);
     await bs.applyModels(app);
@@ -48,6 +50,7 @@ async function load(app) {
     await bs.applyRoutes(app);
     await bs.bootScripts(app);
 }
+
 
 load(app).then(() => {
     app.use(errorHandler({
@@ -61,4 +64,5 @@ load(app).then(() => {
 }).catch((error) => {
     console.error(chalk.bgRed(error));
     process.exit(0);
-})
+});
+/* jshint ignore:end */

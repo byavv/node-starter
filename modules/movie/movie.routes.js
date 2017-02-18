@@ -1,3 +1,5 @@
+"use strict";
+
 const controller = require('./movie.controller')
     , express = require('express')
     , middleware = require('../../middleware')
@@ -18,4 +20,4 @@ module.exports = function (app) {
 
     // ...
     return router;
-}
+};

@@ -1,3 +1,4 @@
+/*jshint -W116*/
 'use strict';
 
 /**
@@ -18,7 +19,7 @@ module.exports = function (app) {
             movie.create(req.body, function (err, movieInst) {
                 if (err) return next(err);
                 res.json(movieInst);
-            })
+            });
         },
 
         /**
@@ -37,9 +38,9 @@ module.exports = function (app) {
          * GET /movies/{id}
          */
         findById(req, res, next) {
-            movie.findById(req.params['id'], (err, result) => {
+            movie.findById(req.params.id, (err, result) => {
                 res.json({ movie: result });
-            })
+            });
         },
 
         /**
@@ -51,7 +52,7 @@ module.exports = function (app) {
         findOne(req, res, next) {
             movie.findOne(req.filter, (err, result) => {
                 res.json(result);
-            })
+            });
         },
 
         /**
@@ -59,7 +60,7 @@ module.exports = function (app) {
          * Update existing movie
          */
         update(req, res, next) {
-            const id = req.params['id'];
+            const id = req.params.id;
             movie.findOneAndUpdate({ id: id }, req.body, (err, result) => {
                 if (err) return next(err);
                 res.json(result);
@@ -70,11 +71,11 @@ module.exports = function (app) {
          *  DELETE /movies/{id} operationId
          */
         remove(req, res, next) {
-            const id = req.params['id'];
+            const id = req.params.id;
             movie.findOneAndRemove({ id: id }, req.body, (err, result) => {
                 if (err) return next(err);
                 res.json(result);
             });
         }
-    }
-}
+    };
+};

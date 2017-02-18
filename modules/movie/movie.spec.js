@@ -1,3 +1,7 @@
+"use strict";
+/*jshint -W030, -W116*/
+/*jshint expr:true*/
+
 const expect = require('chai').expect
     , request = require('supertest')
     , sinon = require('sinon')
@@ -29,18 +33,18 @@ describe('CONTROLLERS TESTS', function () {
         findStub = sinon.stub(movieModel, 'find');
         findOneStub = sinon.stub(movieModel, 'findOne');
         createStub = sinon.stub(movieModel, 'create');
-    })
+    });
 
     afterEach(() => {
         findStub.restore();
         findOneStub.restore();
         createStub.restore();
-    })
+    });
 
     describe('Movies controller', function () {
 
         it('should return movies array', function (done) {
-            findStub.yields(null, [{ title: 'title' }])
+            findStub.yields(null, [{ title: 'title' }]);
             request(server)
                 .get('/api/v1/movies')
                 .set('Accept', 'application/json')

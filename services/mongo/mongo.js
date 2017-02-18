@@ -1,3 +1,5 @@
+"use strict";
+
 const chalk = require('chalk')
     , mongoose = require('mongoose')
     , ServiceBase = require('../../lib').ServiceBase
