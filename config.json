@@ -16,6 +16,10 @@
                     }
                 }
             }
+        },
+        {
+            "path": "./services/sse",
+            "config": {}
         }
     ]
 }

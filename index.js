@@ -59,9 +59,10 @@ load(app).then(() => {
     }));
     http.createServer(app)
         .listen(port, () => {
+            app.emit('loaded');
             console.log(`Server is listening on ${port}`);
         });
-}).catch((error) => {
+}).catch((error) => {    
     console.error(chalk.bgRed(error));
     process.exit(0);
 });

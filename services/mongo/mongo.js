@@ -8,7 +8,7 @@ const chalk = require('chalk')
 class MongoService extends ServiceBase {
     constructor(app, config) {
         super();
-        this.config = config;
+        Object.assign(this, { app, config });
     }
     run() {
         return new Promise((resolve, reject) => {

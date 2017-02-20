@@ -1,0 +1,8 @@
+{
+    "name": "sse",
+    "main": "./sse.js",
+    "defaults": {
+        "retry": "5000",
+        "url": "/sse"
+    }
+}

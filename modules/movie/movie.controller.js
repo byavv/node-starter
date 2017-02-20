@@ -5,9 +5,11 @@
  * Module default controller
  */
 module.exports = function (app) {
-    const movie = app.locals.models.movie;
-    // to have services in your controller:
-    // const someservice = app.locals.services.someservice
+    let movie;
+
+    app.on('loaded', () => {
+        movie = app.locals.models.movie;
+    });
 
     return {
 

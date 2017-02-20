@@ -8,7 +8,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Node-starter</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+    <script>
+        var es = new EventSource("/sse");
+        es.onmessage = function (event) {
+            console.log(JSON.parse(event.data));
+        };
+    </script>
 </head>
 
 <body>
