@@ -58,8 +58,7 @@ SSEClient.prototype.send = function (event, data, id) {
     senderObject.data = senderObject.data.replace(/(\r\n|\r|\n)/g, '\n');
     var dataLines = senderObject.data.split(/\n/);
 
-    for (let i = 0, l = dataLines.length; i < l;) {
-        i++;
+    for (let i = 0, l = dataLines.length; i < l; ++i) {       
         var line = dataLines[i];
         if ((i + 1) === l) {
             this.res.write('data: ' + line + '\n\n');
