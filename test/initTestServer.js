@@ -7,6 +7,7 @@ const express = require('express')
 function load(app) {
     app.set('views', path.join(__dirname, '../', 'views'));
     app.set('view engine', 'jade');
+
     return bs.applyConfig(app, "testConfig.json")
         .then(() => bs.applyModels(app))
         .then(() => bs.runServices(app))
@@ -14,11 +15,12 @@ function load(app) {
         .then(() => bs.bootScripts(app));
 }
 
-module.exports = function (clb) {
+module.exports = function (clb) {  
     app.set("root", path.resolve('..', __dirname));
     load(app).then(() => {
         app.listen(3656, () => {
             clb(null, app);
+            app.emit('loaded');
         });
     }).catch((error) => {
         console.error(error);

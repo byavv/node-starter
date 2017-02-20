@@ -51,19 +51,19 @@ async function load(app) {
     await bs.bootScripts(app);
 }
 
-
-load(app).then(() => {
-    app.use(errorHandler({
-        debug: process.env.NODE_ENV === 'development',
-        log: true,
-    }));
-    http.createServer(app)
-        .listen(port, () => {
-            app.emit('loaded');
-            console.log(`Server is listening on ${port}`);
-        });
-}).catch((error) => {    
-    console.error(chalk.bgRed(error));
-    process.exit(0);
-});
+if (require.main === module)
+    load(app).then(() => {
+        app.use(errorHandler({
+            debug: process.env.NODE_ENV === 'development',
+            log: true,
+        }));
+        http.createServer(app)
+            .listen(port, () => {
+                app.emit('loaded');
+                console.log(`Server is listening on ${port}`);
+            });
+    }).catch((error) => {
+        console.error(chalk.bgRed(error));
+        process.exit(0);
+    });
 /* jshint ignore:end */
