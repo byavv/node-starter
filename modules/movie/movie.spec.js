@@ -21,10 +21,10 @@ describe('CONTROLLERS TESTS', function () {
         ;
 
     before((done) => {
-        loadServer((err, app) => {
+        loadServer('movie', (err, module) => {
             if (err) return done(err);
-            server = app;
-            movieModel = server.locals.models.movie;
+            server = module.app;
+            movieModel = module.model;
             done();
         });
     });
@@ -52,7 +52,7 @@ describe('CONTROLLERS TESTS', function () {
                 .expect(200)
                 .end(function (err, res) {
                     expect(err).to.be.null;
-                    expect(res.body).to.deep.equal({ movies: [{ title: 'title' }] });
+                    expect(res.body).to.deep.equal([{ title: 'title' }] );
                     done();
                 });
         });

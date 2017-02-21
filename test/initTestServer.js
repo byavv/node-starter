@@ -1,25 +1,19 @@
 const express = require('express')
-    , bs = require('../lib/bootstrap')
+    , load = require('../lib/bootstrap')
     , path = require("path")
     , app = require('../')
     ;
 
-function load(app) {
+
+
+module.exports = function (moduleName, clb) {
+    if (!moduleName) throw Error("no module name defined");
+    app.set("root", path.resolve('..', __dirname));
     app.set('views', path.join(__dirname, '../', 'views'));
     app.set('view engine', 'jade');
-
-    return bs.applyConfig(app, "testConfig.json")
-        .then(() => bs.applyModels(app))
-        .then(() => bs.runServices(app))
-        .then(() => bs.applyRoutes(app))
-        .then(() => bs.bootScripts(app));
-}
-
-module.exports = function (clb) {  
-    app.set("root", path.resolve('..', __dirname));
-    load(app).then(() => {
+    load(app, 'testConfig.json').then((modules) => {
         app.listen(3656, () => {
-            clb(null, app);
+            clb(null, modules[moduleName]);
             app.emit('loaded');
         });
     }).catch((error) => {

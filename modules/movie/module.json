@@ -3,8 +3,5 @@
     "name": "movie",
     "controller": "./movie.controller.js",
     "model": "./movie.model.js",
-    "routes": "./movie.routes.js",
-    "dependencies": [
-        "mongo"
-    ]
+    "routes": "./movie.routes.js"
 }

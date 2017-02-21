@@ -3,11 +3,9 @@
 const mongoose = require('mongoose')
     , Schema = mongoose.Schema;
 
-let schemaFactory = function (app) {
-    let sseService;
-    app.on('loaded', () => {
-        sseService = app.locals.services.sse;
-    });
+let schemaFactory = function (movieModule) {
+    const sseService = movieModule.services.sse
+        ;
 
     var movieSchema = new Schema({
         title: String,

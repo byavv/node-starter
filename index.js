@@ -2,7 +2,7 @@
 const http = require('http')
     , express = require('express')
     , program = require('commander')
-    , bs = require('./lib/bootstrap')
+    , load = require('./lib/bootstrap')
     , chalk = require('chalk')
     , fs = require('fs')
     , path = require('path')
@@ -17,7 +17,7 @@ const http = require('http')
 program
     .version('0.0.1')
     .option('-p, --port [value]', 'Set execution port number', parseInt)
-    .option('-c, --config [value]', 'Set bootstrap configuration file location', process.cwd())
+    .option('-d, --dir [value]', 'Set folder with config file (config.json)', path.resolve(__dirname))
     .option('-e, --environment [value]', 'Define environment', /^(development|production|test)$/i, 'development')
     .parse(process.argv);
 
@@ -28,7 +28,7 @@ process.env.NODE_ENV = process.env.NODE_ENV
     : program.environment;
 
 app.set("port", program.port);
-app.set("root", program.config);
+app.set("root", program.dir);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -42,16 +42,7 @@ app.use(morgan('combined', {
 }));
 app.disable('x-powered-by');
 
-/* jshint ignore:start */
-async function load(app) {
-    await bs.applyConfig(app);
-    await bs.applyModels(app);
-    await bs.runServices(app);
-    await bs.applyRoutes(app);
-    await bs.bootScripts(app);
-}
-
-if (require.main === module)
+if (require.main === module) {
     load(app).then(() => {
         app.use(errorHandler({
             debug: process.env.NODE_ENV === 'development',
@@ -66,4 +57,4 @@ if (require.main === module)
         console.error(chalk.bgRed(error));
         process.exit(0);
     });
-/* jshint ignore:end */
+}
