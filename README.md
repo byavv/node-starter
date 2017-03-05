@@ -1,6 +1,6 @@
 [![CircleCI][circle-image]][circle-url]
 
-## Simple starter for node.js applications (WIP)
+## Boilerplate application for building RESTful APIs (WIP)
 
 ## Requirements:
  - MongoDb
@@ -23,8 +23,8 @@ $ npm start
 $ npm test
 
 ```
-
-## Structure
+// https://github.com/KunalKapadia/express-mongoose-es6-rest-api
+## Overview
 ### Modules
 
 Building blocks of the application. Any module consists of model ([Mongoose scheme](http://mongoosejs.com/docs/guide.html)), controller and router. 

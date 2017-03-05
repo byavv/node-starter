@@ -4,8 +4,7 @@ const express = require('express')
     , app = require('../')
     ;
 
-
-
+// todo: start server only for particular module, not all of them
 module.exports = function (moduleName, clb) {
     if (!moduleName) throw Error("no module name defined");
     app.set("root", path.resolve('..', __dirname));
